@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js",
+    "e2e-entry": "mocha --require esm src/tests/e2e/entry.test.cjs",
+    "e2e-users": "mocha --require esm src/tests/e2e/user.test.cjs",
+    "unit-entry": "mocha --require esm src/tests/unit/entry.test.cjs",
+    "unit-users": "mocha --require esm src/tests/unit/user.test.cjs"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +23,11 @@
     "mongoose": "^8.1.1",
     "node-forge": "^1.3.1",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "chai": "^5.0.3",
+    "chai-http": "^4.4.0",
+    "esm": "^3.2.25",
+    "mocha": "^10.2.0"
   }
 }

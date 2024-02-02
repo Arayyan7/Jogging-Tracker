@@ -1,3 +1,20 @@
 -------------------Jogging Tracker-------------------
-*Node version: 18.18.2
-*npm version: 9.8.1
+*Node.js (version 18.18.2 or later)
+*npm (version 9.8.1 or later)
+
+---
+
+*git clone https://github.com/Arayyan7/Jogging-Tracker.git
+*npm install
+\*npm start or node/nodemon server.js
+
+---
+
+e2e entry: node e2e-entry
+e2e user: node e2e-user
+unit entry: node unit-entry
+unit user: node unit-user
+
+---
+
+Once the application is running, you can access the API at http://localhost:3000
