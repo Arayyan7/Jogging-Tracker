@@ -1,0 +1,38 @@
+[
+  {
+    "id": "9a2c44fa-8098-4649-abd0-299eac4a6c5b",
+    "userId": 3,
+    "date": "2024-01-27T19:49:37.965Z",
+    "distance": 5,
+    "time": 1706903509301,
+    "location": "Login",
+    "login": true
+  },
+  {
+    "id": "0fe1f3ca-67f4-4b64-94b7-c27a325ce7a1",
+    "userId": 3,
+    "date": "2024-02-02T19:50:02.914Z",
+    "distance": 7,
+    "time": 1706903509201,
+    "location": "Login",
+    "login": true
+  },
+  {
+    "id": "2cfb0261-e66b-4c26-93b4-deb24ea13b8e",
+    "userId": 3,
+    "date": "2024-02-02T19:51:49.201Z",
+    "distance": 0,
+    "time": 1706903509201,
+    "location": "::1",
+    "login": false
+  },
+  {
+    "id": "b975d9f9-85d5-4f43-9253-4f070862e9f5",
+    "userId": 3,
+    "date": "2024-02-02T20:15:09.836Z",
+    "distance": 0,
+    "time": 1706904909836,
+    "location": "::1",
+    "login": true
+  }
+]
