@@ -1,32 +1,20 @@
 [
   {
-    "id": 1,
-    "username": "rayyan",
-    "password": "123",
-    "role": "user"
-  },
-  {
-    "id": 2,
-    "username": "ahmad",
-    "password": "1234",
-    "role": "user_manager"
-  },
-  {
-    "id": 3,
+    "id": "ba833b8d-7851-4465-95a0-df4f30b7343d",
     "username": "admin",
     "password": "12345",
     "role": "admin"
   },
   {
-    "id": 5,
-    "username": "abdullah",
-    "password": "12345",
-    "role": "user"
+    "username": "regular",
+    "password": "1234",
+    "role": "user",
+    "id": "c51b559d-c2a9-46b6-bb97-4deb8337ace4"
   },
   {
-    "username": "ahmad123",
-    "password": "123444",
-    "role": "user",
-    "id": "ba833b8d-7851-4465-95a0-df4f30b7343d"
+    "username": "manager",
+    "password": "12345",
+    "role": "user_manager",
+    "id": "1a912e4f-9c1f-4f35-98fd-7ac652366f6a"
   }
 ]

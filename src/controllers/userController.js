@@ -1,6 +1,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { generateUniqueId } = require("../utils"); 
 
 const usersFilePath = path.join(__dirname, "../../data/users.json");
 
@@ -46,7 +47,9 @@ const createUser = (req, res) => {
     const usersData = fs.readFileSync(usersFilePath, "utf-8");
     const users = JSON.parse(usersData);
 
-   
+    // Generate a unique ID for the new user
+    newUser.id = generateUniqueId();
+
     const existingUser = users.find((u) => u.id === newUser.id);
 
     if (!existingUser) {

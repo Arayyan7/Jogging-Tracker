@@ -5,23 +5,30 @@ const path = require("path");
 const entriesFilePath = path.join(__dirname, "../../data/entries.json");
 const getAllEntries = (req, res) => {
   try {
+    const userId = req.userId; // Get userId from authenticated user
+    const userRole = req.userRole; // Get userRole from authenticated user
 
     const entries = getEntriesFromJson();
 
+    if (userRole === "user") {
+      // If user role is "user", filter entries for the specific user
+      const userEntries = entries.filter((entry) => entry.userId === userId);
+      res.json({ entries: userEntries });
+    } else {
+      // For "admin" or "user_manager" roles, apply filters and pagination as before
+      const filteredEntries = applyFilters(entries, req.query);
+      const page = parseInt(req.query.page) || 1;
+      const pageSize = parseInt(req.query.pageSize) || 10;
+      const paginatedEntries = paginate(filteredEntries, page, pageSize);
 
-    const filteredEntries = applyFilters(entries, req.query);
-
-   
-    const page = parseInt(req.query.page) || 1;
-    const pageSize = parseInt(req.query.pageSize) || 10;
-    const paginatedEntries = paginate(filteredEntries, page, pageSize);
-
-    res.json({ entries: paginatedEntries });
+      res.json({ entries: paginatedEntries });
+    }
   } catch (error) {
     console.error("Error getting entries:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 
 const getEntryById = (req, res) => {
   const { id } = req.params;

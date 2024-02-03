@@ -14,7 +14,13 @@ const authenticate = (req, res, next) => {
 
     const token = authorizationHeader.replace("Bearer ", "");
     const decoded = jwt.verify(token, publicKey, { algorithms: ["RS256"] });
-    req.user = decoded;
+
+    // Set req properties with decoded user information
+    req.userId = decoded.userId;
+    req.userRole = decoded.role;
+
+    console.log("Decoded Token:", decoded); // Add this line for debugging
+
     next();
   } catch (error) {
     console.error("JWT Verification Error:", error);
@@ -22,13 +28,24 @@ const authenticate = (req, res, next) => {
   }
 };
 
-const authorize = (roles) => {
+
+
+const authorize = (allowedRoles) => {
   return (req, res, next) => {
-    if (!req.user || !roles.includes(req.user.role)) {
+    console.log("req.userId:", req.userId); 
+    console.log("req.userRole:", req.userRole); 
+
+    const isUserAllowed =
+      allowedRoles.includes(req.userRole) || (req.userRole === "user" && req.userId === req.params.id);
+
+    if (!req.userId || !isUserAllowed) {
       return res.status(403).json({ message: "Unauthorized" });
     }
+
     next();
   };
 };
+
+
 
 module.exports = { authenticate, authorize };

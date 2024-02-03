@@ -1,17 +1,32 @@
-
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
-const authController = require("../controllers/authController");
+const authMiddleware = require("../middleware/authMiddleware");
 
-
-router.use(authController.authenticateUser);
-
-
-router.get("/", userController.getAllUsers);
-router.get("/:id", userController.getUserById);
-router.post("/", userController.createUser);
-router.put("/:id", userController.updateUser);
-router.delete("/:id", userController.deleteUser);
+// Apply authentication middleware to specific routes
+router.get(
+  "/",
+  authMiddleware.authenticate,
+  authMiddleware.authorize(["admin", "user_manager"]),
+  userController.getAllUsers
+);
+router.post(
+  "/",
+  authMiddleware.authenticate,
+  authMiddleware.authorize(["admin", "user_manager"]),
+  userController.createUser
+);
+router.put(
+  "/:id",
+  authMiddleware.authenticate,
+  authMiddleware.authorize(["admin", "user_manager"]),
+  userController.updateUser
+);
+router.delete(
+  "/:id",
+  authMiddleware.authenticate,
+  authMiddleware.authorize(["admin", "user_manager"]),
+  userController.deleteUser
+);
 
 module.exports = router;
